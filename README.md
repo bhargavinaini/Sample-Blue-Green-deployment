@@ -24,7 +24,9 @@ Ensure the following tools are installed:
 
 GitHub Repo: [https://github.com/bhargavinaini/Sample-Blue-Green-deployment](https://github.com/bhargavinaini/Sample-Blue-Green-deployment)
 
-├── Jenkinsfile # Jenkins pipeline script 
+├── Jenkins-pod 
+
+| ├── jenkins-deployment.yaml # Jenkins pod with Docker access
 
 ├── nodejs-app/
 
@@ -36,9 +38,10 @@ GitHub Repo: [https://github.com/bhargavinaini/Sample-Blue-Green-deployment](htt
 
 | ├── green-dep.yaml # Kubernetes deployment for Green version
 
-├── jenkins-deployment.yaml # Jenkins pod with Docker access
+├── Jenkinsfile # Jenkins pipeline script 
 
 └── README.md
+
 
 ## 🚀 Setup Instructions
 
