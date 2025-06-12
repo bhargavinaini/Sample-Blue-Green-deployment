@@ -12,6 +12,9 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps {
+                sh "mkdir /tmp/workdir && cd /tmp/workdir"
+                sh "git clone https://github.com/bhargavinaini/Sample-Blue-Green-deployment.git"
+                sh "cd Sample-Blue-Green-deployment/sample-nodejs"
                 sh "docker build -t bhargavinaini21/nodejs:${params.VERSION} ."
             }
         }
@@ -27,6 +30,7 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
+                sh "cd /tmp/workdir"
                 sh "kubectl apply -f ${params.VERSION}-dep.yml"
             }
         }
