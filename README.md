@@ -1,10 +1,6 @@
 # Sample Blue-Green Deployment with Jenkins on Minikube
 
-This project demonstrates a **Blue-Green Deployment** pipeline using:
-- Jenkins deployed on **Minikube** as a Kubernetes pod
-- A dummy **Node.js application**
-- **Docker** for image builds
-- **Jenkins Pipeline** to automate deployment and traffic switch
+This project demonstrates a **Blue-Green Deployment** of a sample Nodejs application using Jenkins:
 
 ---
 
@@ -16,7 +12,6 @@ Ensure the following tools are installed:
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [Docker](https://docs.docker.com/get-docker/)
 - [Git](https://git-scm.com/)
-- [Jenkins CLI (Optional)](https://www.jenkins.io/doc/book/managing/cli/)
 
 ---
 
@@ -90,14 +85,11 @@ kubectl apply -f blue-dep.yml"
 kubectl patch service nodejs-service -p '{\"spec\":{\"selector\":{\"app\":\"nodejs\", \"version\":\"${green}\"}}}'
 ```
 
+Using Jenkins, we can switch the existing deployment, either from blue to green or green to blue. Follow the below steps to create a Jenkins Pipeline to enable Blue-Green deployment process to our application.
+
 ## ⚙️ Jenkins CI/CD Pipeline
 
 1. Create New Pipeline Job in Jenkins.
-
-2. Use the GitHub repo URL:
-https://github.com/bhargavinaini/Sample-Blue-Green-deployment.git
-
-3. Add a Jenkinsfile from the directory.
-
-4. Run the pipeline to automate the build, deploy, and switch process.
+2. Copy the content of Jenkinsfile from the repository as the Pipeline script.
+3. Run the pipeline to automate the build, deploy, and switch process.
           
